@@ -15,6 +15,7 @@ export default function Chat(props) {
   const connection = socketIOClient("https://chattabackend.herokuapp.com/")
  
 
+
   useEffect(() => {
   
     const user = Cookie.getJSON("user")
@@ -24,6 +25,7 @@ export default function Chat(props) {
     connection.emit("JoinRoom", { username: user, room: room })
     connection.on("message", message => {
       setMsg(prev => [...prev, message])
+      setScrolH(document.querySelector(".chat-messages").scrollHeight)
     })
     connection.on("users", dbUsers=>{
       setUsers(dbUsers)
@@ -36,24 +38,26 @@ export default function Chat(props) {
   }, [])
 
 //if we want that a user could be in more than one room at a time we should pass room name as well, and rooms cookie should be an array
-const container = useRef(document.querySelector(".chat-messages"))
+
+
+
+const scrolla = useRef(null)
 
 const sendMessage=(e)=>{
-
   e.preventDefault()
-  const container = document.querySelector(".chat-messages")
-  setScrolH(container.scrollHeight)
-  
-
-  connection.emit("chatMessage", {username: currentUser, msg: sentMsg})
-  setSentMsg("")
+  // const container = document.querySelector(".chat-messages")
  
+  console.log("HOOOOLA MARIKA")
+ 
+  connection.emit("chatMessage", {username: currentUser, msg: sentMsg})
+  setSentMsg("") 
 }
 
 useEffect(()=>{
-  const container = document.querySelector(".chat-messages")
-  container.scrollTop = scrollH
-},[scrollH])
+  document.querySelector(".chat-messages").scrollTop = scrollH
+}
+,[scrollH])
+
 
   const leaveRoom =()=>{
   
