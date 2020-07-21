@@ -12,7 +12,7 @@ export default function Chat(props) {
   const [currentUser, setCurrentUser] = useState("")
   const inputa = useRef(null)
   const [scrollH, setScrolH] = useState(0)
-  const connection = socketIOClient("http://localhost:8000")
+  const connection = socketIOClient("https://chattabackend.herokuapp.com/")
  
 
   useEffect(() => {
