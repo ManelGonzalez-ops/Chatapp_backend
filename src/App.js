@@ -1,23 +1,26 @@
-import React,{useEffect} from "react";
+import React,{useEffect, useState} from "react";
 
 import "./styles.css";
 import {HashRouter, Route, Switch} from "react-router-dom"
 import Home from "./views/home"
 import Chat from "./views/chat"
+import Chato from "./views/chatv2"
 
 
 export default function App() {
-
-  useEffect(()=>{
-
-  },[])
+//esto ya no hace falta ya que tenemos que guardar los links en el servidor
+const [avatarUrl, setAvatarUrl] = useState("") 
   return (
     <HashRouter>
       <Switch>
-        <Route exact path="/" component={Home}/>
+        <Route exact path="/">
+          <Home setAvatarUrl={setAvatarUrl} />
+          </Route>
       </Switch>
       <Switch>
-        <Route exact path="/:room" component={Chat}/>
+        <Route exact path="/:room" >
+          <Chato avatarUrl={avatarUrl} />
+          </Route>
       </Switch>
    </HashRouter>
   )

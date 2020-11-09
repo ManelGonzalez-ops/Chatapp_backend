@@ -60,8 +60,6 @@ useEffect(()=>{
 
 
   const leaveRoom =()=>{
-  
-  
     props.history.push("/")
   }
 

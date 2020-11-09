@@ -8,11 +8,17 @@
   ],
   "main": "src/index.js",
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@mui-treasury/components": "^1.9.1",
+    "cors": "^2.8.5",
     "js-cookie": "^2.2.1",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.0.1",
+    "socket.io": "^3.0.0",
     "socket.io-client": "2.3.0"
   },
   "devDependencies": {
@@ -31,4 +37,3 @@
     "not op_mini all"
   ]
 }
-
